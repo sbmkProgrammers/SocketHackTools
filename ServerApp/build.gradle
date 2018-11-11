@@ -1,0 +1,20 @@
+group 'sbmk.programmers'
+version = 4.0
+
+mainClassName = 'sbmk.tommy.MainKt'
+archivesBaseName = "ServerApp"
+jar {
+	baseName = 'ServerApp'
+	version = version
+	manifest {
+		attributes 'Main-Class': 'sbmk.tommy.MainKt'
+	}
+	from configurations.compile.collect {
+		it.isDirectory() ? it : zipTree(it)
+	}
+}
+
+
+//task execCommandLine(type: Exec) {
+//	commandLine 'cmd', '/c', 'javapackager', '-deploy', '-outDir', 'build/installers', '-outFile', "${archivesBaseName}${version}.exe", '-srcdir', 'build/libs', '-srcfiles', "$archivesBaseName${version}.jar", "-appclass", "sbmk.tommy.MainKt", '-title', "${archivesBaseName}", "-native", "exe", "-BmenuHint=true", "-Bshortcut=true", "-BsystemWide=false", "-BinstalldirChooser=true", "-Bwin64bit=false"
+//}

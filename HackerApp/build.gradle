@@ -1,0 +1,15 @@
+group 'sbmk.programmers'
+version '4.0'
+
+mainClassName='sbmk.tommy.MainKt'
+
+jar {
+	baseName = 'HackerApp'
+	version = version
+	manifest {
+		attributes 'Main-Class': 'sbmk.tommy.MainKt'
+	}
+	from configurations.compile.collect {
+		it.isDirectory() ? it : zipTree(it)
+	}
+}

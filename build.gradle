@@ -1,0 +1,43 @@
+group 'sbmk.programmers'
+version '4.0'
+
+
+buildscript {
+	ext.kotlin_version = '1.2.10'
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+	}
+}
+
+allprojects {
+	apply plugin: 'kotlin'
+}
+
+
+subprojects {
+	apply plugin: 'application'
+	repositories {
+		mavenCentral()
+		jcenter()
+	}
+	
+	dependencies {
+		compile "org.jetbrains.kotlin:kotlin-stdlib:1.3.0"
+		testCompile "org.jetbrains.kotlin:kotlin-test-junit:1.3.0"
+		testCompile 'junit:junit:4.12'
+	}
+}
+
+project(':HackerApp') {
+	dependencies {
+		compile "no.tornado:tornadofx:1.7.10"
+	}
+	
+	
+}
+
+project(':ServerApp') {
+}
